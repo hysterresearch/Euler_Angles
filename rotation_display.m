@@ -1,0 +1,77 @@
+clear
+clc
+% close all
+
+x = [0, 1; 0, 0; 0, 0];
+y = [0, 0; 0, 1; 0, 0];
+z = [0, 0; 0, 0; 0, 1];
+
+figure(1)
+cla
+hold on 
+axis equal
+axis off
+
+ylim([-2, 2])
+xlim([-2, 2])
+zlim([-2, 2])
+
+set(gca,'ydir', 'reverse')
+set(gca,'zdir', 'reverse')
+
+plot3(x(1,:), x(2,:), x(3,:),'linewidth', 1, 'color', 'blue')
+plot3(y(1,:), y(2,:), y(3,:),'linewidth', 1, 'color', 'green')
+plot3(z(1,:), z(2,:), z(3,:),'linewidth', 1, 'color', 'red')
+
+x1_plot = plot3(x(1,:), x(2,:), x(3,:),'linewidth', 2, 'color', 'blue');
+y1_plot = plot3(y(1,:), y(2,:), y(3,:),'linewidth', 2, 'color', 'green');
+z1_plot = plot3(z(1,:), z(2,:), z(3,:),'linewidth', 2, 'color', 'red'); 
+
+
+
+view(-60, 25)
+
+for phi = 0:1:360
+    rotation = Euler_Angles(phi, 0, 0);
+
+    x1 = rotation * x;
+    y1 = rotation * y;
+    z1 = rotation * z;
+
+    set(x1_plot, 'XData', x1(1,:), 'YData', x1(2,:), 'ZData', x1(3,:))
+    set(y1_plot, 'XData', y1(1,:), 'YData', y1(2,:), 'ZData', y1(3,:))
+    set(z1_plot, 'XData', z1(1,:), 'YData', z1(2,:), 'ZData', z1(3,:))
+    pause(0.01)
+    
+end
+
+for theta = 0:1:360
+    rotation = Euler_Angles(0, theta, 0);
+
+    x1 = rotation * x;
+    y1 = rotation * y;
+    z1 = rotation * z;
+
+    set(x1_plot, 'XData', x1(1,:), 'YData', x1(2,:), 'ZData', x1(3,:))
+    set(y1_plot, 'XData', y1(1,:), 'YData', y1(2,:), 'ZData', y1(3,:))
+    set(z1_plot, 'XData', z1(1,:), 'YData', z1(2,:), 'ZData', z1(3,:))
+    pause(0.01)
+    
+end
+
+for psi = 0:1:360
+    rotation = Euler_Angles(0, 0, psi);
+
+    x1 = rotation * x;
+    y1 = rotation * y;
+    z1 = rotation * z;
+
+    set(x1_plot, 'XData', x1(1,:), 'YData', x1(2,:), 'ZData', x1(3,:))
+    set(y1_plot, 'XData', y1(1,:), 'YData', y1(2,:), 'ZData', y1(3,:))
+    set(z1_plot, 'XData', z1(1,:), 'YData', z1(2,:), 'ZData', z1(3,:))
+    pause(0.01)
+    
+end
+
+
+
